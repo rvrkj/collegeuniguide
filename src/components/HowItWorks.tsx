@@ -1,68 +1,92 @@
-import { Upload, Brain, Route, Users } from "lucide-react";
-
 const steps = [
   {
-    icon: Upload,
-    step: "01",
-    title: "Share Your Profile",
-    description:
-      "Upload your academic reports, share your interests, passions, and childhood activities that shaped who you are.",
+    n: "01",
+    title: "Discover your interests",
+    desc: "Pick what excites you. We map careers — not test you.",
+    color: "bg-cyan",
   },
   {
-    icon: Brain,
-    step: "02",
-    title: "AI Analyzes & Maps",
-    description:
-      "Our AI extracts your core qualities — analytical, creative, empathetic — and maps them to real-world career demands.",
+    n: "02",
+    title: "Try real simulations",
+    desc: "Solve actual on-the-job tasks, not textbook quizzes.",
+    color: "bg-yellow",
   },
   {
-    icon: Route,
-    step: "03",
-    title: "Get Career Roadmaps",
-    description:
-      "Receive 2-3 tailored career paths with detailed roadmaps: courses, skills needed, salary outlook, and day-in-the-life previews.",
+    n: "03",
+    title: "Build a portfolio",
+    desc: "Every simulation becomes proof recruiters can see.",
+    color: "bg-accent text-accent-foreground",
   },
   {
-    icon: Users,
-    step: "04",
-    title: "Connect with Mentors",
-    description:
-      "Get matched with verified industry professionals who'll guide you through your chosen path with personalized mentorship.",
+    n: "04",
+    title: "Get matched with jobs",
+    desc: "Based on your performance, not just your resume.",
+    color: "bg-background",
+  },
+];
+
+const outcomes = [
+  {
+    title: "Action over advice",
+    desc: "Stop reading career articles. Try the role for 10 minutes.",
+  },
+  {
+    title: "Outcome-driven",
+    desc: "Every screen tied to jobs, not lessons or grades.",
+  },
+  {
+    title: "Honest scores",
+    desc: "Brutal but useful. You'll know exactly where you stand.",
   },
 ];
 
 const HowItWorks = () => {
   return (
-    <section className="bg-section-alt py-16">
+    <section id="discover" className="border-b-2 border-foreground bg-section-alt py-20">
       <div className="container">
-        <div className="text-center">
-          <h2 className="font-heading text-3xl font-bold text-foreground">
-            How <span className="text-gradient">WisdomPath AI</span> Works
-          </h2>
-          <p className="mx-auto mt-2 max-w-xl text-muted-foreground">
-            Our AI agent builds a holistic profile of you — then matches it with real career data and mentors
-          </p>
+        <div className="mb-4 inline-block -rotate-1 bg-accent px-3 py-1 font-mono text-xs font-bold uppercase tracking-widest text-accent-foreground ink-border">
+          ✦ The 4-step climb
+        </div>
+        <h2 className="font-display text-foreground text-5xl sm:text-6xl lg:text-7xl">
+          BUILD PROOF.<br />
+          GET <span className="bg-yellow px-2 ink-border">MATCHED</span>.<br />
+          SKIP THE WAIT.
+        </h2>
+        <p className="mt-5 max-w-xl font-body text-foreground/70">
+          Most career advice ends at "pick a stream". We start where that ends.
+        </p>
+
+        {/* Steps */}
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {steps.map((s) => (
+            <div
+              key={s.n}
+              className={`${s.color} p-6 ink-border shadow-brutal transition-transform hover:-translate-x-1 hover:-translate-y-1`}
+            >
+              <div className="font-mono text-[10px] font-bold uppercase tracking-widest opacity-70">
+                Step {s.n} of 04
+              </div>
+              <div className="mt-2 font-display text-5xl">{s.n}</div>
+              <h3 className="mt-4 font-display text-xl">{s.title}</h3>
+              <p className="mt-2 font-body text-sm leading-relaxed opacity-80">{s.desc}</p>
+            </div>
+          ))}
         </div>
 
-        <div className="relative mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {/* Connecting line (desktop) */}
-          <div className="absolute left-0 right-0 top-16 hidden h-0.5 bg-border lg:block" />
-
-          {steps.map((s) => {
-            const Icon = s.icon;
-            return (
-              <div key={s.step} className="relative text-center">
-                <div className="relative mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-card">
-                  <Icon className="h-6 w-6" />
-                  <span className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-accent text-xs font-bold text-accent-foreground">
-                    {s.step}
-                  </span>
-                </div>
-                <h3 className="mt-5 font-heading text-lg font-bold text-card-foreground">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.description}</p>
+        {/* Outcome cards */}
+        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
+          {outcomes.map((o, i) => (
+            <div
+              key={o.title}
+              className="bg-background p-6 ink-border shadow-brutal"
+            >
+              <div className="font-mono text-xs font-bold uppercase tracking-widest text-accent">
+                0{i + 1}
               </div>
-            );
-          })}
+              <h3 className="mt-3 font-display text-2xl text-foreground">{o.title}</h3>
+              <p className="mt-2 font-body text-sm text-foreground/70">{o.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

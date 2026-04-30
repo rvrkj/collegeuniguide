@@ -1,48 +1,49 @@
-import { GraduationCap, Search, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
-const navLinks = ["Colleges", "Exams", "Courses", "Rankings", "Careers"];
+const navLinks = ["Discover", "Colleges", "Portfolio", "Score", "Jobs", "Applications"];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-primary text-primary-foreground">
-      <div className="container flex items-center justify-between py-3">
+    <header className="sticky top-0 z-50 border-b-2 border-foreground bg-background">
+      <div className="container flex items-center justify-between py-4">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2">
-          <GraduationCap className="h-8 w-8 text-accent" />
-          <span className="font-heading text-xl font-bold tracking-tight">
-            College<span className="text-accent">Uni</span>Guide
-          </span>
+        <a href="/" className="flex items-center gap-2.5">
+          <div className="flex h-10 w-10 items-center justify-center bg-accent font-display text-xl text-accent-foreground ink-border">
+            C
+          </div>
+          <div className="leading-none">
+            <div className="font-display text-base text-foreground">College/Uni</div>
+            <div className="font-mono text-[10px] tracking-widest text-muted-foreground">GUIDE.APP</div>
+          </div>
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-1 lg:flex">
           {navLinks.map((link) => (
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
-              className="rounded-md px-3 py-2 text-sm font-medium text-primary-foreground/80 transition-colors hover:bg-primary-foreground/10 hover:text-primary-foreground"
+              className="px-3 py-2 font-mono text-xs font-bold uppercase tracking-widest text-foreground transition-colors hover:text-accent"
             >
               {link}
             </a>
           ))}
         </nav>
 
-        {/* Right actions */}
+        {/* Right action */}
         <div className="flex items-center gap-3">
-          <button className="hidden rounded-md p-2 text-primary-foreground/80 transition-colors hover:bg-primary-foreground/10 md:inline-flex">
-            <Search className="h-5 w-5" />
-          </button>
           <a
-            href="#counselling"
-            className="hidden gradient-accent rounded-lg px-4 py-2 text-sm font-semibold text-accent-foreground transition-shadow hover:shadow-lg md:inline-flex"
+            href="#start"
+            className="hidden bg-accent px-5 py-3 font-mono text-xs font-bold uppercase tracking-widest text-accent-foreground ink-border shadow-brutal transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 md:inline-flex"
           >
-            Get Counselling
+            Get Started Free
           </a>
           <button
-            className="p-2 md:hidden"
+            className="p-2 lg:hidden"
+            aria-label="Toggle menu"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -52,22 +53,22 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <nav className="border-t border-primary-foreground/10 px-4 pb-4 md:hidden">
+        <nav className="border-t-2 border-foreground bg-background px-4 pb-4 lg:hidden">
           {navLinks.map((link) => (
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
-              className="block rounded-md px-3 py-2.5 text-sm font-medium text-primary-foreground/80 hover:bg-primary-foreground/10"
+              className="block py-3 font-mono text-sm font-bold uppercase tracking-widest text-foreground"
               onClick={() => setMobileOpen(false)}
             >
               {link}
             </a>
           ))}
           <a
-            href="#counselling"
-            className="mt-2 block gradient-accent rounded-lg px-4 py-2.5 text-center text-sm font-semibold text-accent-foreground"
+            href="#start"
+            className="mt-2 block bg-accent px-5 py-3 text-center font-mono text-xs font-bold uppercase tracking-widest text-accent-foreground ink-border"
           >
-            Get Counselling
+            Get Started Free
           </a>
         </nav>
       )}
