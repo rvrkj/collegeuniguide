@@ -1,5 +1,6 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const navLinks = ["Discover", "Colleges", "Portfolio", "Score", "Jobs", "Applications"];
 
@@ -10,7 +11,7 @@ const Navbar = () => {
     <header className="sticky top-0 z-50 border-b-2 border-foreground bg-background">
       <div className="container flex items-center justify-between py-4">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2.5">
+        <Link to="/" className="flex items-center gap-2.5">
           <div className="flex h-10 w-10 items-center justify-center bg-accent font-display text-xl text-accent-foreground ink-border">
             C
           </div>
@@ -18,18 +19,18 @@ const Navbar = () => {
             <div className="font-display text-base text-foreground">College/Uni</div>
             <div className="font-mono text-[10px] tracking-widest text-muted-foreground">GUIDE.APP</div>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-1 lg:flex">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link}
-              href={`#${link.toLowerCase()}`}
+              to={`/${link.toLowerCase()}`}
               className="px-3 py-2 font-mono text-xs font-bold uppercase tracking-widest text-foreground transition-colors hover:text-accent"
             >
               {link}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -55,14 +56,14 @@ const Navbar = () => {
       {mobileOpen && (
         <nav className="border-t-2 border-foreground bg-background px-4 pb-4 lg:hidden">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link}
-              href={`#${link.toLowerCase()}`}
+              to={`/${link.toLowerCase()}`}
               className="block py-3 font-mono text-sm font-bold uppercase tracking-widest text-foreground"
               onClick={() => setMobileOpen(false)}
             >
               {link}
-            </a>
+            </Link>
           ))}
           <a
             href="#start"
